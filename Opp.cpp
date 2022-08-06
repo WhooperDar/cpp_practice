@@ -16,7 +16,13 @@ class Car{
 		
 		void carInfo(){
 			
-		}
+			cout << "\n ====== Car Info ======= \n";  
+			cout << "Brand: " << brand << endl; 
+			cout << "Color: " << color << endl; 
+			cout << "Model: " << model << endl; 
+			cout << "Manufactured year: " << year << endl; 
+			cout << "Size: " << size << endl; 
+ 		}
 			
 		void drive(int counts){
 			cout << brand << " is now driving" << " number of counts: " << counts << endl;  
@@ -55,6 +61,7 @@ int main(void){
 		cout << cars[i].brand << " " << cars[i].model << " " << cars[i].year <<"\n"; 
 		cars[i].drive(j_count); 
 		cars[i].openWindow(); 
+		cars[i].carInfo(); 
 	}
 	
 	return 0; 

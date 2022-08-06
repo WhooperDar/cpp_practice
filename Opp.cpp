@@ -5,15 +5,21 @@
 
 using namespace std; 
 
+// Class 
 class Car{
+	// public members 
 	public: 
 	Car (string x, int y); // constructor declaration 
+		
+		// variable objects
 		string color; 
 		string brand; 
 		string model; 
 		int year; 
 		int size; 
 		
+		
+		// Methods
 		void carInfo(){
 			
 			cout << "\n ====== Car Info ======= \n";  
@@ -23,7 +29,8 @@ class Car{
 			cout << "Manufactured year: " << year << endl; 
 			cout << "Size: " << size << endl; 
  		}
-			
+		
+		
 		void drive(int counts){
 			cout << brand << " is now driving" << " number of counts: " << counts << endl;  
 		}
@@ -31,6 +38,21 @@ class Car{
 		void openWindow(){
 			cout << brand << " is opened the window" << endl; 
 		}
+		
+		void coreDataInfo(int fuel, string microType){
+			fuelAmount = fuel; 
+			microcontrollerType = microType; 
+			
+			cout << "\n ===========-------============= \n"; 
+			cout << "Core Data Information: " << endl; 
+			cout << "Amount of Gas " << "[" << fuelAmount << "]" << endl; 
+			cout << "Microcontroller Type: " << "[" << microcontrollerType << "]" << endl;  		
+		}
+		
+	// private members
+	private: 
+		int fuelAmount; 
+		string microcontrollerType; 	
 };
 
 // outside constructor implementation
@@ -40,9 +62,13 @@ Car::Car(string x, int y){
 }
 
 int main(void){
+	// Object instanstiation
 	Car car_1("Blue", 50), car_2("Red", 30), car_3("Orange", 20); 
 	int i, j_count; 
+	int fuelAmt[3] = {500, 233, 644}; 
+	string micro[3] = {"Arduino Uno", "Arduino Leonardo", "Arduino Namo"}; 
 	
+	// Object Assigning
 	car_1.brand = "Lamborgini"; 
 	car_1.model =  "Labrador"; 
 	car_1.year = 2020; 
@@ -62,6 +88,10 @@ int main(void){
 		cars[i].drive(j_count); 
 		cars[i].openWindow(); 
 		cars[i].carInfo(); 
+		
+		
+		// printing car private members 
+		cars[i].coreDataInfo(fuelAmt[i], micro[i]); 
 	}
 	
 	return 0; 

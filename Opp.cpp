@@ -5,6 +5,9 @@
 
 using namespace std; 
 
+void RestoProgram(); 
+void CarProgram(); 
+
 // Class 
 class Car{
 	// public members 
@@ -61,7 +64,52 @@ Car::Car(string x, int y){
 	size = y; 
 }
 
+// inheritance 
+
+class Restaurant{ 
+	public: 
+	
+		// Restaurant Constructor 
+		Restaurant(string name, string type, string mainFood){
+			restoName = name; 
+			restoType = type; 
+			restoMainDish = mainFood; 
+		}; 
+		
+		void restoInfo(){
+			cout << "\n ===========Restaurant Information=========== \n"; 
+			cout << "Name of the Restaurant: " << restoName << endl; 
+			cout << "Type of restaurant: " << restoType << endl; 
+			cout << "Main Course: " << restoMainDish << endl; 
+		}
+		
+	private: 
+		string restoName; 
+		string restoType; 
+		string restoMainDish; 
+};
+
+class Jolibee : public Restaurant{ 
+	public: 
+		void serveFood(){ 
+			cout << "Chicken Joy" << " is served" << endl; 
+		}
+}; 
+
+// Main Function 
 int main(void){
+	
+	RestoProgram();
+	
+	return 0; 
+}
+
+void RestoProgram(){
+	Restaurant resto("Jolibee", "Fast food chain", "Chicken Joy");
+	resto.restoInfo(); 
+}
+
+void CarProgram(){
 	// Object instanstiation
 	Car car_1("Blue", 50), car_2("Red", 30), car_3("Orange", 20); 
 	int i, j_count; 
@@ -94,5 +142,4 @@ int main(void){
 		cars[i].coreDataInfo(fuelAmt[i], micro[i]); 
 	}
 	
-	return 0; 
 }

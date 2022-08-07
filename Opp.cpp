@@ -66,6 +66,7 @@ Car::Car(string x, int y){
 
 // inheritance 
 
+// Base Classs
 class Restaurant{ 
 	public: 
 	
@@ -89,12 +90,29 @@ class Restaurant{
 		string restoMainDish; 
 };
 
-class Jolibee : public Restaurant{ 
+
+// Derived class
+class Jolibee: public Restaurant{ 
 	public: 
 		void serveFood(){ 
 			cout << "Chicken Joy" << " is served" << endl; 
 		}
+		
+		Jolibee(string name, string type, string mainFood) : Restaurant(name, type, mainFood){
+			
+		}
 }; 
+//  Multilevel class  
+class Chowking: public Jolibee { 
+	public: 
+		void restoName(){
+			cout << "\nThis is Chowking!\n"; 
+		}
+		
+		Chowking(string name, string type, string mainFood) : Jolibee(name, type, mainFood){ 
+		
+		}
+};
 
 // Main Function 
 int main(void){
@@ -107,6 +125,18 @@ int main(void){
 void RestoProgram(){
 	Restaurant resto("Jolibee", "Fast food chain", "Chicken Joy");
 	resto.restoInfo(); 
+	
+	cout << "\nFrom Jolibee instance" << endl; 
+	Jolibee jolly("Jolibee", "Fast food chain", "Chicken Joy"); 
+	jolly.restoInfo(); 
+	jolly.serveFood(); 
+	
+	cout << "\nChowking resto" << endl; 
+	
+	Chowking chow ("Chowking", "Fast food chain", "Siomai Rice"); 
+	chow.restoInfo(); 
+	chow.serveFood(); 
+	chow.restoName(); 
 }
 
 void CarProgram(){

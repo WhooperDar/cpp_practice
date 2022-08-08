@@ -7,6 +7,7 @@ using namespace std;
 
 void RestoProgram(); 
 void CarProgram(); 
+void MicroProgram(); 
 
 // Class 
 class Car{
@@ -98,10 +99,9 @@ class Jolibee: public Restaurant{
 			cout << "Chicken Joy" << " is served" << endl; 
 		}
 		
-		Jolibee(string name, string type, string mainFood) : Restaurant(name, type, mainFood){
-			
-		}
+		Jolibee(string name, string type, string mainFood) : Restaurant(name, type, mainFood){}
 }; 
+
 //  Multilevel class  
 class Chowking: public Jolibee { 
 	public: 
@@ -109,17 +109,68 @@ class Chowking: public Jolibee {
 			cout << "\nThis is Chowking!\n"; 
 		}
 		
-		Chowking(string name, string type, string mainFood) : Jolibee(name, type, mainFood){ 
+		Chowking(string name, string type, string mainFood) : Jolibee(name, type, mainFood){ }
+};
+
 		
+
+class EmbeddedSys {
+	public: 
+		void micro(){
+			cout << "Microprocessor" << endl; 
 		}
 };
 
+class Micro {
+	public: 
+		void microsystems(){
+			cout << "Micro-system-services" << endl; 
+		}
+};
+
+class EmbeddedSystem2 : public EmbeddedSys, public Micro{
+	public: 
+		void microcontroller (){
+			cout << "Microcontroller" << endl; 
+		}
+};
+
+// With protected 
+class Employee {
+	protected: 
+		int salary; 
+};
+
+class Programmer: public Employee {
+	public: 
+		int bonus; 
+		void setSalary(int s){
+			salary = s; 
+		}
+		
+		int getSalary(){
+			return salary;
+		}
+};
 // Main Function 
 int main(void){
-	
-	RestoProgram();
-	
+
+	Programmer ako; 
+	ako.setSalary(1000000);
+	cout << ako.getSalary();   
 	return 0; 
+}
+
+
+
+
+void MicroProgram(){
+	
+	EmbeddedSystem2 systemsMicro; 
+	
+	systemsMicro.micro(); 
+	systemsMicro.microcontroller(); 
+	systemsMicro.microsystems();
 }
 
 void RestoProgram(){
